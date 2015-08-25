@@ -22,7 +22,7 @@
 
     describe('login form', function() {
       it('should show by default', function() {
-        expect(el.find('form').hasClass('ng-hide')).not.toBe(true);
+        expect(el.find('form').parent().hasClass('ng-hide')).not.toBe(true);
       });
 
       it('should show an alert on message', function() {
