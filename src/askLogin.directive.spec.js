@@ -8,7 +8,7 @@
     beforeEach(module('ask.component.login'));
     beforeEach(inject(function($compile, _$rootScope_) {
 
-      el = angular.element('<ask-login progress="progress" message="message" on-submit="onSubmit">' +
+      el = angular.element('<ask-login progress="progress" message="message" on-submit="onSubmit" img="img">' +
                              '<div class="transcluded">stuff to transclude</div>' +
                            '</ask-login>');
 
@@ -20,6 +20,46 @@
 
     it('should be compiled', function() {
       expect(el.html()).not.toEqual(null);
+    });
+
+    describe('header', function() {
+      it('should only exist on img', function() {
+        expect(el.find('.ask-login__header').length).toBe(0);
+
+        $rootScope.img = 'something'
+        $rootScope.$digest();
+        expect(el.find('.ask-login__header').length).toBe(1);
+      });
+
+      it('should show a subtitle on img.subtitle', function() {
+        $rootScope.img = {
+          thing: 'thing'
+        };
+        $rootScope.$digest();
+
+        expect(el.find('.ask-login__subtitle').hasClass('ng-hide')).toBe(true);
+
+
+        $rootScope.img.subtitle = 'a subtitle';
+        $rootScope.$digest();
+        expect(el.find('.ask-login__subtitle').hasClass('ng-hide')).not.toBe(true);
+        expect(el.find('.ask-login__subtitle').html()).toContain('a subtitle');
+      });
+
+      describe('header image', function() {
+        it('should have an assigned src and alt', function() {
+          $rootScope.img = {
+            src: 'source',
+            alt: 'alternate'
+          };
+          $rootScope.$digest();
+
+          expect(el.find('.ask-login__image').attr('src')).toBe('source');
+          expect(el.find('.ask-login__image').attr('alt')).toBe('alternate');
+        });
+      });
+
+
     });
 
     describe('login form', function() {

@@ -2,6 +2,18 @@
   display: block;
 }
 
+.ask-login__header {
+
+}
+
+.ask-login__image {
+  @include center-block;
+}
+
+.ask-login__subtitle {
+  text-align: center;
+}
+
 .ask-login__form {
 
 }
