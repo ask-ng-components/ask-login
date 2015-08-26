@@ -15,6 +15,7 @@
           onSubmit: '&'
       },
       templateUrl: 'askLogin.html',
+      transclude: true,
       link: askLoginLink
     };
     return directive;

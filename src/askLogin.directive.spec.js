@@ -8,7 +8,9 @@
     beforeEach(module('ask.component.login'));
     beforeEach(inject(function($compile, _$rootScope_) {
 
-      el = angular.element('<ask-login progress="progress" message="message" on-submit="onSubmit"></ask-login>');
+      el = angular.element('<ask-login progress="progress" message="message" on-submit="onSubmit">' +
+                             '<div class="transcluded">stuff to transclude</div>' +
+                           '</ask-login>');
 
       $rootScope = _$rootScope_;
 
@@ -22,7 +24,7 @@
 
     describe('login form', function() {
       it('should show by default', function() {
-        expect(el.find('form').hasClass('ng-hide')).not.toBe(true);
+        expect(el.find('form').parent().hasClass('ng-hide')).not.toBe(true);
       });
 
       it('should show an alert on message', function() {
@@ -74,6 +76,10 @@
 
         expect(username).toBe('aUsernam3');
         expect(password).toBe('aPassword');
+      });
+
+      it('should include the transcluded div', function() {
+        expect(el.find('.transcluded').length).toBe(1);
       });
     });
 
