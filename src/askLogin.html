@@ -1,6 +1,9 @@
 <div class="panel panel-default ask-login">
   <div class="panel-body">
-    <img ng-if="img" ng-src="img.src" alt="{{img.alt}}" />
+    <header ng-if="img" class="ask-login__header">
+      <img class="ask-login__image" ng-src="{{img.src}}" alt="{{img.alt}}" />
+      <p class="ask-login__subtitle" ng-show="img.subtitle">{{img.subtitle}}</p>
+    </header>
 
     <div ng-show="progress === undefined || progress === null" class="ask-login__form">
       <div ng-show="message" class="alert alert-danger alert-dismissible ask-login__alert" role="alert">
