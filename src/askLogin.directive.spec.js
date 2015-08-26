@@ -69,8 +69,8 @@
           password = pass;
         };
 
-        el.find('#login-username').val('aUsernam3').triggerHandler('input');
-        el.find('#login-password').val('aPassword').triggerHandler('input');
+        el.find('#ask-login-username').val('aUsernam3').triggerHandler('input');
+        el.find('#ask-login-password').val('aPassword').triggerHandler('input');
 
         el.find('form > button').triggerHandler('click');
 
