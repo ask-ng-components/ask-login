@@ -8,7 +8,7 @@
     beforeEach(module('ask.component.login'));
     beforeEach(inject(function($compile, _$rootScope_) {
 
-      el = angular.element('<ask-login progress="progress" message="message" on-submit="onSubmit" img="img">' +
+      el = angular.element('<ask-login progress="progress" message="message" on-submit="onSubmit" img="img" remember="remember">' +
                              '<div class="transcluded">stuff to transclude</div>' +
                            '</ask-login>');
 
@@ -116,6 +116,21 @@
 
         expect(username).toBe('aUsernam3');
         expect(password).toBe('aPassword');
+      });
+
+      describe('remember checkbox', function() {
+        it('should toggle the assigned value', function() {
+          expect(el.find('.ask-login__remember input').attr('checked')).toBeUndefined();
+          expect($rootScope.remember).toBeUndefined();
+
+          // check on
+          el.find('.ask-login__remember input').trigger('click');
+          expect($rootScope.remember).toBe(true);
+
+          //check off
+          el.find('.ask-login__remember input').trigger('click');
+          expect($rootScope.remember).toBe(false);
+        });
       });
 
       it('should include the transcluded div', function() {

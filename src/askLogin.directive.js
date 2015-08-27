@@ -8,11 +8,12 @@
     var directive = {
       restrict: 'E',
       scope: {
-          progress: '=?',
-          message: '=?',
-          strings: '=?',
-          img: '=?',
-          onSubmit: '&'
+        onSubmit: '&',
+        remember: '=',
+        progress: '=?',
+        message: '=?',
+        strings: '=?',
+        img: '=?'
       },
       templateUrl: 'askLogin.html',
       transclude: true,
@@ -25,7 +26,8 @@
         scope.strings = {
           username: 'Username',
           password: 'Password',
-          submit: 'Submit'
+          submit: 'Submit',
+          remember: 'Remember me'
         };
       }
 

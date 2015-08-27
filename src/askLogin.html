@@ -19,6 +19,11 @@
           <label class="sr-only" for="ask-login-password">{{strings.password}}</label>
           <input type="password" ng-model="password" class="form-control" id="ask-login-password" placeholder="{{strings.password}}">
         </div>
+        <div class="ask-login__remember checkbox">
+          <label>
+            <input ng-model="remember" type="checkbox">{{strings.remember}}
+          </label>
+        </div>
         <button class="ask-login__submit-button btn btn-default" ng-class="" ng-click="submit(username, password)" ng-disabled=submitDisabled>{{strings.submit}}</button>
       </form>
       <ng-transclude></ng-transclude>
